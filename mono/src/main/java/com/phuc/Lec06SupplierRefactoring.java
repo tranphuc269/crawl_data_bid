@@ -11,14 +11,15 @@ public class Lec06SupplierRefactoring {
         getName()
                 .subscribeOn(Schedulers.boundedElastic())
                 .subscribe(Util.onNext());
+
         getName()
                 .subscribeOn(Schedulers.boundedElastic())
                 .subscribe(Util.onNext());
-        getName()
+        String name = getName()
                 .subscribeOn(Schedulers.boundedElastic())
-                .subscribe(Util.onNext());
-        // có thể sử dụng cơ chế sleep để block luồng chính trong 4s, tại thời điểm này tất cả onNext đều success
-        Util.sleep(4);
+                .block();
+        System.out.println("name  ::" + name);
+
     }
 
 
